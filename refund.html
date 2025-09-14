@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refund Policy - Gamelyra</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0e17;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, #0a0e17, #1a243a);
+            padding: 20px 0;
+            border-bottom: 1px solid #2a3a5a;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            font-size: 32px;
+            color: #ff9c00;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(to right, #ff9c00, #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Navigation */
+        nav {
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .nav-link {
+            color: #a0b3d6;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #ff9c00;
+        }
+        
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .page-title h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #ffcc00, #ff9c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        
+        .page-title p {
+            color: #a0b3d6;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Refund Content */
+        .refund-content {
+            background: linear-gradient(to bottom, #1a243a, #16202f);
+            border-radius: 12px;
+            padding: 40px;
+            border: 1px solid #2a3a5a;
+            margin-bottom: 50px;
+        }
+        
+        .refund-section {
+            margin-bottom: 30px;
+        }
+        
+        .refund-section h2 {
+            color: #ffcc00;
+            margin-bottom: 15px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .refund-section p, .refund-section ul {
+            color: #a0b3d6;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .refund-section ul {
+            padding-left: 20px;
+        }
+        
+        .refund-section li {
+            margin-bottom: 10px;
+        }
+        
+        .highlight {
+            color: #ff9c00;
+            font-weight: 600;
+        }
+        
+        .warning-box {
+            background-color: #5a2a2a;
+            border-left: 4px solid #ff4d4d;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .info-box {
+            background-color: #2a3a5a;
+            border-left: 4px solid #ff9c00;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0a0e17;
+            padding: 40px 0 20px;
+            border-top: 1px solid #2a3a5a;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: #ff9c00;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column p, .footer-column li {
+            color: #a0b3d6;
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column a {
+            color: #a0b3d6;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: #ff9c00;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #2a3a5a;
+            color: #a0b3d6;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .page-title h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-link {
+                display: block;
+                margin: 10px 0;
+            }
+            
+            .refund-content {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 24px;
+            }
+            
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <div class="logo-text">GAMELYRA</div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Navigation -->
+        <nav>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="accounts.html" class="nav-link">Game Accounts</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="contact.html" class="nav-link">Contact Us</a>
+        </nav>
+        
+        <!-- Page Title -->
+        <div class="page-title">
+            <h1>Refund Policy</h1>
+            <p>We strive for customer satisfaction with fair and transparent refund policies</p>
+        </div>
+        
+        <!-- Refund Content -->
+        <div class="refund-content">
+            <div class="refund-section">
+                <h2><i class="fas fa-info-circle"></i> Our Refund Policy</h2>
+                <p>At Gamelyra, we want you to be completely satisfied with your purchase. Please read this policy carefully to understand our refund procedures.</p>
+                <p>Due to the digital nature of our products, we have specific refund conditions designed to be fair to both our customers and our business.</p>
+            </div>
+            
+            <div class="refund-section">
+                <h2><i class="fas fa-check-circle"></i> Eligibility for Refunds</h2>
+                <p>Refunds may be considered under the following circumstances:</p>
+                <ul>
+                    <li>The account was not delivered due to technical issues on our end</li>
+                    <li>The account details provided do not match the description</li>
+                    <li>The account is inaccessible within 24 hours of purchase</li>
+                    <li>Duplicate payment for the same order</li>
+                </ul>
+                
+                <div class="info-box">
+                    <p><span class="highlight">Note:</span> All refund requests must be submitted within 24 hours of purchase and before any account details have been used or modified.</p>
+                </div>
+            </div>
+            
+            <div class="refund-section">
+                <h2><i class="fas fa-times-circle"></i> Non-Refundable Situations</h2>
+                <p>Unfortunately, we cannot offer refunds in these cases:</p>
+                <ul>
+                    <li>If you change your mind after receiving the account details</li>
+                    <li>If the game developer bans the account (unless it was already banned at time of purchase)</li>
+                    <li>If you provided incorrect information during purchase</li>
+                    <li>If you've already used or modified the account credentials</li>
+                    <li>If the request is made more than 24 hours after purchase</li>
+                </ul>
+            </div>
+            
+            <div class="refund-section">
+                <h2><i class="fas fa-exclamation-triangle"></i> Chargeback Policy</h2>
+                <p>Initiating a chargeback without first contacting us will result in immediate account suspension and may lead to permanent banning from our services.</p>
+                
+                <div class="warning-box">
+                    <p><span class="highlight">Important:</span> Please contact us first if you have any issues with your purchase. We're here to help and will work with you to resolve any problems.</p>
+                </div>
+            </div>
+            
+            <div class="refund-section">
+                <h2><i class="fas fa-sync-alt"></i> How to Request a Refund</h2>
+                <p>To request a refund, please follow these steps:</p>
+                <ol>
+                    <li>Contact us within 24 hours of your purchase</li>
+                    <li>Provide your order number and reason for the refund request</li>
+                    <li>Do not use or modify the account credentials while your request is being reviewed</li>
+                    <li>Our support team will review your request and respond within 48 hours</li>
+                </ol>
+                
+                <p>If your refund is approved, it will be processed to your original payment method within 5-10 business days.</p>
+            </div>
+            
+            <div class="refund-section">
+                <h2><i class="fas fa-exchange-alt"></i> Account Replacement</h2>
+                <p>In some cases, instead of a refund, we may offer to replace the account with one of equal or greater value if:</p>
+                <ul>
+                    <li>The account has minor issues that don't match the description exactly</li>
+                    <li>You're unsatisfied but still want a similar product</li>
+                    <li>The issue is something we can rectify with a different account</li>
+                </ul>
+            </div>
+            
+            <div class="refund-section">
+                <h2><i class="fas fa-question-circle"></i> Questions About Refunds</h2>
+                <p>If you have any questions about our refund policy, please contact us before making a purchase. We're happy to clarify any concerns you might have.</p>
+            </div>
+            
+            <div class="refund-section">
+                <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+                <p>To request a refund or ask questions about our policy, contact us through:</p>
+                <ul>
+                    <li>Email: <span class="highlight">support@gamelyra.com</span></li>
+                    <li>Facebook: <span class="highlight">@gamelyra</span></li>
+                    <li>Telegram: <span class="highlight">@gamelyra</span></li>
+                </ul>
+                <p>Please include your order number and reason for contacting us for faster service.</p>
+            </div>
+            
+            <div class="info-box">
+                <p>Last updated: October 28, 2023</p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Gamelyra</h3>
+                    <p>The leading marketplace for premium gaming accounts. Trusted by thousands of gamers worldwide.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="accounts.html">Game Accounts</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="refund.html">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Gamelyra Marketplace. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
