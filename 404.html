@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>404 — Page Not Found</title>
+  <meta name="description" content="The page you’re looking for could not be found. Clash of Clans account selling site." />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#ffb86b; --muted:#9aa4b2;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:linear-gradient(180deg,var(--bg), #071026 120%);
+      color:#e6eef6; display:flex; align-items:center; justify-content:center; padding:28px;
+    }
+    .card{
+      width:min(960px,96vw);
+      background:var(--card);
+      border-radius:16px; padding:28px; box-shadow:0 10px 30px rgba(2,6,23,0.6);
+      display:grid; grid-template-columns: 1fr 420px; gap:22px; align-items:center;
+    }
+    .left h1{font-size:46px; margin:0 0 6px 0;}
+    .big-404{font-weight:800; color:var(--accent); font-size:52px;}
+    .left p{color:var(--muted); margin:12px 0 18px 0; line-height:1.5}
+    .actions{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      background:linear-gradient(90deg,#ffd7aa, #ffb86b); color:#081220; padding:10px 16px;
+      border-radius:10px; text-decoration:none; font-weight:700;
+    }
+    .btn.ghost{background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.04)}
+    .search{margin-top:10px; display:flex; gap:8px}
+    .search input{flex:1; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:inherit;}
+    .search button{padding:10px 12px; border-radius:10px; border:none; cursor:pointer; background:var(--accent); font-weight:700}
+    .right{display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center}
+    .illustration{width:100%; max-width:340px; height:240px; border-radius:12px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.03)}
+    .shield{width:150px; height:150px; animation:float 4s ease-in-out infinite}
+    @keyframes float{0%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}100%{transform:translateY(0) rotate(-3deg)}}
+    @media(max-width:860px){.card{grid-template-columns:1fr;}.right{order:-1}.left h1{font-size:32px}}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <section class="left">
+      <div class="big-404">404</div>
+      <h1>Oops! Page not found</h1>
+      <p>The page you’re looking for doesn’t exist — it might have been moved, deleted, or the link was typed incorrectly. Don’t worry, let’s get you back on track.</p>
+      <div class="actions">
+        <a class="btn" href="/">Back to Home</a>
+        <a class="btn ghost" href="/accounts">Browse Accounts</a>
+        <a class="btn ghost" href="/contact">Contact Support</a>
+      </div>
+      <div class="search">
+        <input id="quick-search" type="search" placeholder="Search — e.g. TH14, max heroes" />
+        <button id="search-btn">Search</button>
+      </div>
+    </section>
+    <aside class="right">
+      <div class="illustration">
+        <svg class="shield" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="g1" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#ffd7aa"/><stop offset="1" stop-color="#ffb86b"/></linearGradient></defs>
+          <path d="M32 2c9 0 18 4.5 18 10.2v14.7c0 11.8-8.7 22.6-18 24.9-9.3-2.3-18-13.1-18-24.9V12.2C14 6.5 23 2 32 2z" fill="url(#g1)"/>
+          <circle cx="32" cy="36" r="6" fill="#082033"/>
+        </svg>
+      </div>
+      <h2>Don’t get lost</h2>
+      <p style="color:#9aa4b2;">All accounts are listed safely — head back and find the one you need.</p>
+    </aside>
+  </main>
+  <script>
+    document.getElementById('search-btn').addEventListener('click', function(){
+      var q = document.getElementById('quick-search').value.trim();
+      if(!q){document.getElementById('quick-search').focus(); return;}
+      window.location.href = '/accounts?search=' + encodeURIComponent(q);
+    });
+    document.getElementById('quick-search').addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){document.getElementById('search-btn').click();}
+    });
+  </script>
+</body>
+</html>
