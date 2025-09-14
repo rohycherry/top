@@ -25,15 +25,16 @@
     .left h1{font-size:46px; margin:0 0 6px 0;}
     .big-404{font-weight:800; color:var(--accent); font-size:52px;}
     .left p{color:var(--muted); margin:12px 0 18px 0; line-height:1.5}
-    .actions{display:flex; gap:12px; flex-wrap:wrap}
+    .notice{
+      margin-top:16px; padding:12px; border-radius:10px; background:rgba(255,184,107,0.08);
+      color:var(--accent); font-weight:600; font-size:15px;
+    }
+    .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
     .btn{
       background:linear-gradient(90deg,#ffd7aa, #ffb86b); color:#081220; padding:10px 16px;
       border-radius:10px; text-decoration:none; font-weight:700;
     }
     .btn.ghost{background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.04)}
-    .search{margin-top:10px; display:flex; gap:8px}
-    .search input{flex:1; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.05); color:inherit;}
-    .search button{padding:10px 12px; border-radius:10px; border:none; cursor:pointer; background:var(--accent); font-weight:700}
     .right{display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center}
     .illustration{width:100%; max-width:340px; height:240px; border-radius:12px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(255,255,255,0.03)}
     .shield{width:150px; height:150px; animation:float 4s ease-in-out infinite}
@@ -46,15 +47,16 @@
     <section class="left">
       <div class="big-404">404</div>
       <h1>Oops! Page not found</h1>
-      <p>The page you’re looking for doesn’t exist — it might have been moved, deleted, or the link was typed incorrectly. Don’t worry, let’s get you back on track.</p>
-      <div class="actions">
-        <a class="btn" href="/">Back to Home</a>
-        <a class="btn ghost" href="/accounts">Browse Accounts</a>
-        <a class="btn ghost" href="/contact">Contact Support</a>
+      <p>The page you’re looking for doesn’t exist — it might have been moved, deleted, or typed incorrectly.</p>
+      
+      <div class="notice">
+        ⚒️ Our website is still under construction — new pages and features are being added soon.
       </div>
-      <div class="search">
-        <input id="quick-search" type="search" placeholder="Search — e.g. TH14, max heroes" />
-        <button id="search-btn">Search</button>
+
+      <div class="actions">
+        <a class="btn" href="index.html">Back to Home</a>
+        <a class="btn ghost" href="/coc-accounts/">Browse Accounts</a>
+        <a class="btn ghost" href="/contact">Contact Support</a>
       </div>
     </section>
     <aside class="right">
@@ -66,18 +68,8 @@
         </svg>
       </div>
       <h2>Don’t get lost</h2>
-      <p style="color:#9aa4b2;">All accounts are listed safely — head back and find the one you need.</p>
+      <p style="color:#9aa4b2;">Head back home or browse accounts safely while we finish building the site.</p>
     </aside>
   </main>
-  <script>
-    document.getElementById('search-btn').addEventListener('click', function(){
-      var q = document.getElementById('quick-search').value.trim();
-      if(!q){document.getElementById('quick-search').focus(); return;}
-      window.location.href = '/accounts?search=' + encodeURIComponent(q);
-    });
-    document.getElementById('quick-search').addEventListener('keydown', function(e){
-      if(e.key === 'Enter'){document.getElementById('search-btn').click();}
-    });
-  </script>
 </body>
 </html>
