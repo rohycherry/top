@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameAccounts Marketplace</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0e17;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding-bottom: 80px; /* Space for mobile nav */
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, #0a0e17, #1a243a);
+            padding: 15px 0;
+            border-bottom: 1px solid #2a3a5a;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            font-size: 28px;
+            color: #ff9c00;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(to right, #ff9c00, #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #ff9c00;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Game Selection Buttons */
+        .game-selection {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .game-btn {
+            padding: 14px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid #2a3a5a;
+            background: linear-gradient(to right, #1a243a, #233056);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            min-width: 0;
+            flex: 1;
+            justify-content: center;
+            min-height: 60px;
+        }
+        
+        .game-btn:hover, .game-btn:active {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(255, 156, 0, 0.3);
+            border-color: #ff9c00;
+        }
+        
+        .game-btn.active {
+            background: linear-gradient(to right, #ff7b00, #ff9c00);
+            border-color: #ff9c00;
+            color: #0a0e17;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: radial-gradient(circle at top, #1a243a, #0a0e17);
+            border-radius: 12px;
+            margin: 20px 0;
+            border: 1px solid #2a3a5a;
+        }
+        
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #ffcc00, #ff9c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: #a0b3d6;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            line-height: 1.5;
+        }
+        
+        /* Popular Sections */
+        .popular-sections {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .popular-section {
+            background: linear-gradient(to bottom, #1a243a, #16202f);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2a3a5a;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #2a3a5a;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            color: #ffcc00;
+            font-weight: 700;
+        }
+        
+        .view-all {
+            color: #ff9c00;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .view-all:hover {
+            text-decoration: underline;
+        }
+        
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #0f1525;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid #2a3a5a;
+            text-decoration: none;
+            color: inherit;
+            min-height: 70px;
+        }
+        
+        .item:active {
+            transform: translateY(-3px);
+            border-color: #ff9c00;
+            box-shadow: 0 5px 15px rgba(255, 156, 0, 0.1);
+        }
+        
+        .item-icon {
+            width: 36px;
+            height: 36px;
+            background: #2a3a5a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: #ff9c00;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        .item-name {
+            font-weight: 600;
+            color: #e0e0e0;
+            font-size: 15px;
+        }
+        
+        /* Cards container */
+        .cards-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 20px 0;
+        }
+        
+        /* Individual card */
+        .card {
+            background: linear-gradient(to bottom, #1a243a, #16202f);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid #2a3a5a;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card:active {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(255, 156, 0, 0.2);
+            border-color: #ff9c00;
+        }
+        
+        .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-bottom: 1px solid #2a3a5a;
+        }
+        
+        /* Card content */
+        .card-body {
+            padding: 18px;
+        }
+        
+        .card-title {
+            font-weight: bold;
+            font-size: 17px;
+            margin-bottom: 12px;
+            color: #ffcc00;
+        }
+        
+        .card-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .detail {
+            background-color: #2a3a5a;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #cbd5e6;
+        }
+        
+        /* Price section */
+        .price-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #2a3a5a;
+        }
+        
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff9c00;
+        }
+        
+        .instant {
+            font-size: 13px;
+            color: #4caf50;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 40px 0;
+            background: #0f1525;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 1px solid #2a3a5a;
+        }
+        
+        .features-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            color: #ffcc00;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .feature-card {
+            background: #1a243a;
+            padding: 25px 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #2a3a5a;
+        }
+        
+        .feature-icon {
+            font-size: 36px;
+            color: #ff9c00;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 12px;
+            color: #ffcc00;
+            font-size: 18px;
+        }
+        
+        .feature-card p {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0a0e17;
+            padding: 30px 0 20px;
+            border-top: 1px solid #2a3a5a;
+            margin-top: 40px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .footer-column h3 {
+            color: #ff9c00;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .footer-column p, .footer-column li {
+            color: #a0b3d6;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column a {
+            color: #a0b3d6;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .footer-column a:active {
+            color: #ff9c00;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #2a3a5a;
+            color: #a0b3d6;
+            font-size: 14px;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a243a;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            border-top: 1px solid #2a3a5a;
+            z-index: 1000;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #a0b3d6;
+            font-size: 12px;
+            gap: 5px;
+        }
+        
+        .nav-item.active {
+            color: #ff9c00;
+        }
+        
+        .nav-icon {
+            font-size: 20px;
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .game-selection {
+                flex-wrap: nowrap;
+            }
+            
+            .items-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .cards-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .mobile-nav {
+                display: none;
+            }
+            
+            body {
+                padding-bottom: 0;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .popular-sections {
+                grid-template-columns: 1fr;
+            }
+            
+            .cards-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .game-btn {
+                font-size: 14px;
+                padding: 12px 15px;
+            }
+            
+            .items-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .item {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <div class="logo-text">GAMELYRA</div>
+                </div>
+                <button class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </header>
+        
+        <!-- Game Selection Buttons -->
+        <div class="game-selection">
+            <a href="coc-accounts.html" class="game-btn active">
+                <i class="fas fa-shield-alt"></i> Clash of Clans
+            </a>
+            <a href="hayday-accounts.html" class="game-btn">
+                <i class="fas fa-tractor"></i> Hay Day
+            </a>
+            <a href="clash-royale-accounts.html" class="game-btn">
+                <i class="fas fa-crown"></i> Clash Royale
+            </a>
+        </div>
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Premium Game Accounts Marketplace</h1>
+            <p>Find high-quality game accounts at competitive prices. Instant delivery and 24/7 customer support.</p>
+        </section>
+        
+        <!-- Popular Sections -->
+        <div class="popular-sections">
+            <div class="popular-section">
+                <div class="section-header">
+                    <h2 class="section-title">Popular Accounts</h2>
+                    <a href="all-accounts.html" class="view-all">View All</a>
+                </div>
+                <div class="items-grid">
+                    <a href="coc-accounts.html" class="item">
+                        <div class="item-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="item-name">Clash of Clans</div>
+                    </a>
+                    <a href="hayday-accounts.html" class="item">
+                        <div class="item-icon">
+                            <i class="fas fa-tractor"></i>
+                        </div>
+                        <div class="item-name">Hay Day</div>
+                    </a>
+                    <a href="gta5-accounts.html" class="item">
+                        <div class="item-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <div class="item-name">GTA 5</div>
+                    </a>
+                    <a href="valorant-accounts.html" class="item">
+                        <div class="item-icon">
+                            <i class="fas fa-fist-raised"></i>
+                        </div>
+                        <div class="item-name">Valorant</div>
+                    </a>
+                    <a href="cod-accounts.html" class="item">
+                        <div class="item-icon">
+                            <i class="fas fa-ghost"></i>
+                        </div>
+                        <div class="item-name">Call of Duty</div>
+                    </a>
+                    <a href="clash-royale-accounts.html" class="item">
+                        <div class="item-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="item-name">Clash Royale</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Features Section -->
+        <section class="features">
+            <h2 class="features-title">Why Choose Our Marketplace</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure Transactions</h3>
+                    <p>All transactions are protected with advanced encryption and security protocols.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Instant Delivery</h3>
+                    <p>Receive your account details immediately after payment confirmation.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our customer support team is available around the clock to assist you.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Quality Accounts</h3>
+                    <p>All accounts are verified for quality and authenticity before listing.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GameAccounts</h3>
+                    <p>The leading marketplace for premium gaming accounts. Trusted by thousands of gamers worldwide.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="coc-accounts.html">Clash of Clans Accounts</a></li>
+                        <li><a href="hayday-accounts.html">Hay Day Accounts</a></li>
+                        <li><a href="clash-royale-accounts.html">Clash Royale Accounts</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="refund.html">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 GameAccounts Marketplace. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    
+
+
+    <script>
+        // Simple JavaScript for mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            alert('Mobile menu would open here. This is a placeholder functionality.');
+        });
+    </script>
+</body>
+</html>
