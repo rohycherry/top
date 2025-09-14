@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Gamelyra</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0e17;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, #0a0e17, #1a243a);
+            padding: 20px 0;
+            border-bottom: 1px solid #2a3a5a;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            font-size: 32px;
+            color: #ff9c00;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(to right, #ff9c00, #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Navigation */
+        nav {
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .nav-link {
+            color: #a0b3d6;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #ff9c00;
+        }
+        
+        /* Page Title */
+        .page-title {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .page-title h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, #ffcc00, #ff9c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        
+        .page-title p {
+            color: #a0b3d6;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* FAQ Content */
+        .faq-content {
+            background: linear-gradient(to bottom, #1a243a, #16202f);
+            border-radius: 12px;
+            padding: 40px;
+            border: 1px solid #2a3a5a;
+            margin-bottom: 50px;
+        }
+        
+        .search-box {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: 1px solid #2a3a5a;
+            background-color: #0f1525;
+            color: #e0e0e0;
+            font-size: 16px;
+            padding-left: 50px;
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ff9c00;
+            font-size: 18px;
+        }
+        
+        .faq-category {
+            margin-bottom: 40px;
+        }
+        
+        .category-title {
+            color: #ffcc00;
+            margin-bottom: 20px;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #2a3a5a;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            background: #0f1525;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #2a3a5a;
+        }
+        
+        .faq-question {
+            color: #e0e0e0;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: #1a243a;
+        }
+        
+        .faq-answer {
+            color: #a0b3d6;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 300px;
+        }
+        
+        .faq-question i {
+            color: #ff9c00;
+            transition: transform 0.3s;
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        .contact-prompt {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #2a3a5a;
+        }
+        
+        .contact-prompt p {
+            color: #a0b3d6;
+            margin-bottom: 20px;
+        }
+        
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(to right, #ff7b00, #ff9c00);
+            color: #0a0e17;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(255, 156, 0, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background: #0a0e17;
+            padding: 40px 0 20px;
+            border-top: 1px solid #2a3a5a;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: #ff9c00;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column p, .footer-column li {
+            color: #a0b3d6;
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column a {
+            color: #a0b3d6;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: #ff9c00;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #2a3a5a;
+            color: #a0b3d6;
+            font-size: 14px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .page-title h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-link {
+                display: block;
+                margin: 10px 0;
+            }
+            
+            .faq-content {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text {
+                font-size: 24px;
+            }
+            
+            .page-title h1 {
+                font-size: 1.8rem;
+            }
+            
+            .faq-question {
+                padding: 15px;
+                font-size: 16px;
+            }
+            
+            .faq-answer.active {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fas fa-crown"></i></div>
+                    <div class="logo-text">GAMELYRA</div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Navigation -->
+        <nav>
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="accounts.html" class="nav-link">Game Accounts</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="contact.html" class="nav-link">Contact Us</a>
+        </nav>
+        
+        <!-- Page Title -->
+        <div class="page-title">
+            <h1>Frequently Asked Questions</h1>
+            <p>Find answers to common questions about our game account marketplace</p>
+        </div>
+        
+        <!-- FAQ Content -->
+        <div class="faq-content">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search for questions..." id="faq-search">
+            </div>
+            
+            <div class="faq-category">
+                <h2 class="category-title"><i class="fas fa-shopping-cart"></i> Purchasing & Payments</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How do I purchase a game account?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To purchase a game account, simply browse our selection, choose the account you want, click "Buy Now," and complete the checkout process. You'll receive the account details instantly after payment confirmation.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What payment methods do you accept?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept various payment methods including credit/debit cards, PayPal, cryptocurrency, and other popular payment options depending on your region.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is my payment information secure?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we use industry-standard encryption and secure payment processors to protect your payment information. We never store your full payment details on our servers.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-category">
+                <h2 class="category-title"><i class="fas fa-gamepad"></i> Account Delivery & Access</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How quickly will I receive my account?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All accounts are delivered instantly after payment confirmation. You'll receive the account details via email and they'll be available in your account dashboard immediately.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What should I do after receiving the account?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>After receiving the account, we strongly recommend that you immediately change the password and enable two-factor authentication if available. This helps secure the account and prevent unauthorized access.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if the account doesn't work?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you encounter any issues with your account, please contact our support team immediately. We provide 24/7 support and will help resolve any problems you might have.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-category">
+                <h2 class="category-title"><i class="fas fa-shield-alt"></i> Security & Safety</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Are these accounts legitimate?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, all accounts we sell are legitimate. We verify each account before listing it for sale to ensure it meets our quality standards and matches the description provided.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is buying game accounts against the game's Terms of Service?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Many games have terms that prohibit account trading. While we ensure our accounts are legitimate, we cannot guarantee that game developers won't take action against accounts. Use at your own risk.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What happens if the account gets banned after purchase?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We're not responsible for bans that occur after the account has been delivered, especially if the ban results from actions taken after purchase. However, if an account was already banned at the time of purchase, we'll provide a replacement or refund.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-category">
+                <h2 class="category-title"><i class="fas fa-exchange-alt"></i> Refunds & Returns</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer refunds?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Due to the digital nature of our products, we generally don't offer refunds once account details have been delivered. However, we may make exceptions in cases where the account doesn't match its description or has major issues. Please see our Refund Policy for details.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What if I received the wrong account?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>If you received an account that doesn't match the description, contact us immediately. We'll verify the issue and provide a replacement account or refund depending on the circumstances.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Can I exchange my account for a different one?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Exchanges are handled on a case-by-case basis. If you haven't used or modified the account, we may be able to exchange it for another account of equal value. Contact our support team for assistance.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-prompt">
+                <p>Still have questions? We're here to help!</p>
+                <a href="contact.html" class="contact-btn">Contact Support</a>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Gamelyra</h3>
+                    <p>The leading marketplace for premium gaming accounts. Trusted by thousands of gamers worldwide.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="accounts.html">Game Accounts</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="refund.html">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Gamelyra Marketplace. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // FAQ toggle functionality
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Close all other FAQ items
+                faqQuestions.forEach(otherQuestion => {
+                    if (otherQuestion !== question) {
+                        otherQuestion.classList.remove('active');
+                        otherQuestion.nextElementSibling.classList.remove('active');
+                        otherQuestion.querySelector('i').classList.remove('fa-chevron-up');
+                        otherQuestion.querySelector('i').classList.add('fa-chevron-down');
+                    }
+                });
+                
+                // Toggle current item
+                question.classList.toggle('active');
+                answer.classList.toggle('active');
+                
+                if (question.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.getElementById('faq-search');
+        searchInput.addEventListener('keyup', function() {
+            const searchTerm = this.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    // Expand if it contains search term
+                    if (searchTerm && !item.querySelector('.faq-question').classList.contains('active')) {
+                        item.querySelector('.faq-question').click();
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Show/hide category titles based on visible items
+            document.querySelectorAll('.faq-category').forEach(category => {
+                const visibleItems = category.querySelectorAll('.faq-item[style="display: block"]');
+                if (visibleItems.length > 0) {
+                    category.style.display = 'block';
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+        });
+        
+        // Open first FAQ item by default
+        if (faqQuestions.length > 0) {
+            faqQuestions[0].click();
+        }
+    </script>
+</body>
+</html>
