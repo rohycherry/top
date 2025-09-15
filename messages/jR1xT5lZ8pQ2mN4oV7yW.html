@@ -32,26 +32,34 @@
             text-align: center;
         }
         
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-        
-        .logo-icon {
-            font-size: 32px;
-            color: #f1c40f;
-        }
-        
-        .logo-text {
-            font-size: 28px;
-            font-weight: 700;
-            background: linear-gradient(to right, #f1c40f, #ffcc00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .logo-link {
+    display: inline-flex;    /* flex preserve করতে */
+    align-items: center;     /* vertical alignment ঠিক রাখতে */
+    gap: 2px;                /* logo image & text gap ধরে রাখতে */
+    text-decoration: none;   /* underline remove করতে */
+    cursor: pointer;         /* hover এ pointer দেখাতে */
+}
+
+/* আগের CSS অপরিবর্তিত রাখা যায় */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+}
+
+.logo-text {
+    font-size: 24px;
+    font-weight: 800;
+    background: linear-gradient(to right, #ff9c00, #ffcc00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
         
         /* Navigation */
         nav {
@@ -294,11 +302,15 @@
 <body>
     <div class="container">
         <!-- Header -->
-        <header>
-            <div class="logo">
-                <div class="logo-icon"><i class="fas fa-crown"></i></div>
-                <div class="logo-text">GAMELYRA</div>
-            </div>
+       <div class="header-top">
+    <a href="https://your-website.com" class="logo-link">
+        <div class="logo">
+            <img src="logo.png" alt="ClashMarket Logo" class="logo-img">
+            <div class="logo-text">GAMELYRA</div>
+        </div>
+    </a>
+</div>
+
             
             <nav>
                 <a href="index.html" class="nav-link">Home</a>
