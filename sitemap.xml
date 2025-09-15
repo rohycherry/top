@@ -15,15 +15,10 @@
 <url>
   <loc>https://gamelyra.com/coc-accounts/</loc>
   <lastmod>2025-09-14T23:41:02+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.100</priority>
 </url>
 <url>
   <loc>https://gamelyra.com/hayday-accounts/</loc>
-  <lastmod>2025-09-14T23:41:02+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://gamelyra.com/index.html</loc>
   <lastmod>2025-09-14T23:41:02+00:00</lastmod>
   <priority>0.80</priority>
 </url>
@@ -50,8 +45,9 @@
 <url>
   <loc>https://gamelyra.com/refund.html</loc>
   <lastmod>2025-09-14T23:41:02+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.60</priority>
 </url>
+
 
 
 </urlset>
