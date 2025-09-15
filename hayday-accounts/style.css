@@ -20,6 +20,15 @@ header {
     margin-bottom: 20px;
 }
 
+.logo-link {
+    display: inline-flex;    /* flex preserve করতে */
+    align-items: center;     /* vertical alignment ঠিক রাখতে */
+    gap: 2px;                /* logo image & text gap ধরে রাখতে */
+    text-decoration: none;   /* underline remove করতে */
+    cursor: pointer;         /* hover এ pointer দেখাতে */
+}
+
+/* আগের CSS অপরিবর্তিত রাখা যায় */
 .logo {
     display: flex;
     align-items: center;
@@ -38,6 +47,7 @@ header {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
 
 .user-actions {
     display: flex;
