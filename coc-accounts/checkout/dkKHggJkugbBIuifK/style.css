@@ -1,0 +1,341 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body styling with gradient background */
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    min-height: 100vh;
+    padding: 15px;
+}
+
+/* Container for centering content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* Header styling */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Main heading */
+h1 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: #f1c40f;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.3;
+}
+
+/* Content area styling */
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Slider container */
+.slider-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Slider for images */
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 250px;
+}
+
+/* Individual slide */
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Slide images */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Overlay text on slides */
+.slide-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 15px;
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* Navigation for slider thumbnails */
+.slider-nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* Thumbnail styling */
+.thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+/* Active and hover state for thumbnails */
+.thumb:hover, .thumb.active {
+    opacity: 1;
+    border: 2px solid #f1c40f;
+}
+
+/* Thumbnail images */
+.thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Control buttons (prev/next) */
+.controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    padding: 0 15px;
+    z-index: 10;
+}
+
+/* Individual control button */
+.control-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Hover effect for control buttons */
+.control-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Product information section */
+.product-info {
+    width: 100%;
+}
+
+/* Product title */
+.product-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #f1c40f;
+}
+
+/* Preformatted text for description */
+pre {
+    white-space: pre-wrap;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Features section */
+.features {
+    margin: 20px 0;
+}
+
+/* Features heading */
+.features h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+/* Features list */
+.feature-list {
+    list-style: none;
+    margin-top: 15px;
+}
+
+/* Individual feature item */
+.feature-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+}
+
+/* Icon color for features */
+.feature-list li i {
+    color: #f1c40f;
+}
+
+/* Price styling */
+.price {
+    font-size: 1.8rem;
+    color: #f1c40f;
+    margin: 20px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Action buttons container */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* Button styling */
+.btn {
+    background: #f1c40f;
+    color: #2c3e50;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+/* Button hover effect */
+.btn:hover {
+    background: #e67e22;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
+}
+
+/* Button icon */
+.btn i {
+    font-size: 1.2rem;
+}
+
+/* Secondary button style */
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Secondary button hover effect */
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Slider controls */
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+/* WhatsApp floating button */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+/* WhatsApp button hover effect */
+.whatsapp-float:hover {
+    background-color: #128C7E;
+}
+
+/* Security note styling */
+.security-note {
+    background: rgba(46, 204, 113, 0.2);
+    border-left: 4px solid #2ecc71;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Responsive design for tablets and larger screens */
+@media (min-width: 768px) {
+    .content {
+        flex-direction: row;
+    }
+    
+    .slider-container {
+        flex: 1;
+    }
+    
+    .product-info {
+        flex: 1;
+    }
+    
+    .slider {
+        height: 350px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .action-buttons {
+        flex-direction: row;
+    }
+}
